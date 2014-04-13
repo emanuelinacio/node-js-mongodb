@@ -1,0 +1,14 @@
+extends layout
+block content
+	div.top
+		div.alert.alert-success
+			p Product #{product.p_name} Selected
+		form.form-horizontal( method="post", id="loginForm" )
+		label Product Discription
+		input.span3( id="description", type="text", name="description", placeholder="Product Description", value="#{product.discription}" )
+		label Product Stock
+		input.span3( id="stock", type="number", name="stock", placeholder="Product Stock", value="#{product.stock}" )
+		label Product Unitary $
+		input.span3( id="unitary", type="text", name="unitary", placeholder="Product Unitary", value="#{product.unitary}" )
+		input.btn( type="submit", value="Update" )
+		input.btn( type="submit", value="Delete" )

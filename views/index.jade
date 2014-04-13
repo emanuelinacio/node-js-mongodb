@@ -1,0 +1,23 @@
+extends layout
+block content
+	div.container
+		p.navbar-brand Show All Products
+		div.content
+			table.table.table-striped
+				thead
+					tr
+						th Name
+						th Description
+						th Stock
+						th Unitary
+						th _Id
+						th Details
+					tbody
+						- for item_each in item
+							tr
+								td #{ item_each.p_name }
+								td #{ item_each.discription }
+								td #{ item_each.stock }
+								td #{ item_each.unitary }
+								td #{ item_each._id }
+								td: a( href='#{ item_each._id }' ): span.glyphicon.glyphicon-align-justify Details
