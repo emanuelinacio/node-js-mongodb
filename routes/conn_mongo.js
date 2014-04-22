@@ -40,23 +40,33 @@ function populate_collection() {
 	});
 }
 
-exports.findById = function( req, res, products, layout, layout_obj ) {
+exports.findById = function( req, res, products, layout, layout_obj, type ) {
 	var id = req.params.id;
 	console.log( 'Retrieving : ' + id );
 	db.collection( products, function( err, collection ) {
 		collection.findOne( { '_id':new BSON.ObjectID( id ) }, function( err, item ) {
 			if ( item != null ) {
-				res.render( 'single-product', { product: item } );
+
+				if ( type == 'json' ) {
+					res.send( item );
+				}else {
+					res.render( 'single-product', { product: item } );
+				}
 			}
 		});
 	});
 };
 
-exports.findAll = function( req, res, products, layout, layout_obj ) {
+exports.findAll = function( req, res, products, layout, layout_obj, type ) {
 
 	db.collection( products, function( err, collection ) {
 		collection.find().toArray( function( err, items ) {
-			res.render( 'index' , { 'item': items } );
+			if ( type == 'json' ) {
+				res.send( items );
+			}else{
+
+				res.render( 'index' , { 'item': items } );
+			}
 		});
 	});
 };
