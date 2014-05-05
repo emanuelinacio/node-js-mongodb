@@ -1,10 +1,17 @@
 {
-	"name" : "app - mongodb",
+	"name" : "app_mongodb",
 	"description" : "Sample mongodb connection",
+	"license" : "BSD-3-Clause",
 	"version" : "0.0.1",
-	"dependencies": {
-		"express" : "~3.0.0",
+	"dependencies": 
+	{
+		"express" : "3.x",
 		"jade"    : ">= 0.0.1",
-		"mongodb" : ""
+		"mongodb" : "*"
+	},
+	"repository" :
+	{
+		"type" : "git",
+		"url" : "https://github.com/emanuelinacio/node-js-mongodb.git"
 	}
 }
