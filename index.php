@@ -19,8 +19,14 @@
 				request.open("GET", url, true);
 				request.onreadystatechange = function () {
 				if (request.readyState != 4 || request.status != 200) return;
-					console.log( request.responseText );
-					document.getElementById('div_response').textContent=request.responseText;
+					var json = $.extend({}, JSON.parse( request.responseText ) );
+					if ( json.status == "ok" ){
+						var response = 'alert-success';
+					}else{
+						var response = 'alert-dange';						
+					}
+					$( div_response ).addClass( response ).html( json.message );
+					
 				};
 				request.send();
 			}
@@ -45,7 +51,7 @@
 				encodeURIComponent( document.getElementById( 'stock' ).value ) + "&" +
 				encodeURIComponent( document.getElementById( 'unitary' ).value );
 
-				ajax_update( url , 'return_message' );				
+				ajax_update( url , '#return_message' );				
 
 			}
 

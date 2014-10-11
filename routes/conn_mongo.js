@@ -42,6 +42,7 @@ function populate_collection() {
 
 exports.update = function( req, res, products ){
 	var id = req.params.id;
+	console.log( 'Retrieving Update : ' + id );
 
 	db.collection( products, function( err, collection ) {
 
@@ -53,9 +54,9 @@ exports.update = function( req, res, products ){
 		};
 
 		collection.update( { _id:new BSON.ObjectID( id ) }, model_product , function( err, item ) {
-			var return_response = [{ status: 'ok', message : 'Sucess Update' }];
+			var return_response = { status: 'ok', message : 'Sucess Update' };
 			if ( err != null ) {		
-				return_response = [{ status: 'erro', message : err }];
+				return_response = { status: 'erro', message : err };
 			}
 			res.send( return_response );
 		});
