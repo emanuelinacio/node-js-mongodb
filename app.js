@@ -19,6 +19,7 @@ app.get( '/product/json/', products.jsonlistproducts );
 
 app.get( '/product/json/:id?', products.jsonfindById );
 
+app.get( '/product/update/:id&:name&:description&:stock&:unitary?', products.update_product );
 
 app.get( '/product', products.listproducts );
 

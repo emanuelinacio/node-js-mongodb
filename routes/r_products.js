@@ -12,6 +12,10 @@ exports.jsonfindById = function( req, res ) {
 	collection_products.findById( req, res, 'products', 'single-product', 'product', 'json' );
 };
 
+exports.update_product = function( req, res ) {
+	collection_products.update( req, res, 'products' );
+};
+
 exports.jsonlistproducts = function( req, res ) {
 	collection_products.findAll( req, res, 'products', 'index', 'item', 'json' );
 };

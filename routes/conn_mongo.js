@@ -40,6 +40,28 @@ function populate_collection() {
 	});
 }
 
+exports.update = function( req, res, products ){
+	var id = req.params.id;
+
+	db.collection( products, function( err, collection ) {
+
+		var model_product = {
+			p_name      : req.params.name,
+			discription : req.params.description,
+			stock       : req.params.stock,
+			unitary     : req.params.unitary
+		};
+
+		collection.update( { _id:new BSON.ObjectID( id ) }, model_product , function( err, item ) {
+			var return_response = [{ status: 'ok', message : 'Sucess Update' }];
+			if ( err != null ) {		
+				return_response = [{ status: 'erro', message : err }];
+			}
+			res.send( return_response );
+		});
+	});
+};
+
 exports.findById = function( req, res, products, layout, layout_obj, type ) {
 	var id = req.params.id;
 	console.log( 'Retrieving : ' + id );
